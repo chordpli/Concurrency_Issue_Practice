@@ -1,6 +1,7 @@
 package com.example.stock.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.stock.domain.Stock;
@@ -16,6 +17,7 @@ public class StockService {
 	}
 
 	//@Transactional
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public synchronized void decrease(Long id, Long quantity) {
 		// get stock
 		// 재고 감소
